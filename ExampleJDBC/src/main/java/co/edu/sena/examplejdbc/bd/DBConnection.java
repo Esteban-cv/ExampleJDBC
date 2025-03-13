@@ -4,7 +4,7 @@
  */
 package co.edu.sena.examplejdbc.bd;
 
-import co.edu.sena.examplejdbc.bd.utils.MessageUtils;
+import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
