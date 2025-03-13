@@ -49,4 +49,11 @@ public class DBConnection {
             MessageUtils.showErrorMessage("ERROR desconectandose de la base de datos...");
         }
     }
+    public Connection getConnection() {
+        if (connection == null) {
+            System.out.println("⚠️ No hay conexión activa. Intentando reconectar...");
+            connect();
+        }
+        return connection;
+    }
 }

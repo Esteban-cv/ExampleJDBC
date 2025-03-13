@@ -37,7 +37,7 @@ public class DBEmployeeType extends DBConnection {
     public void update(EmployeeType employeeType){
         try {
             connect();
-            String sql = "update employee_type set descript = ? where id = ?";
+            String sql = "update employee_type set descript = ? where id = ?"; 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, employeeType.getDescript());
             preparedStatement.setInt(2, employeeType.getId());
@@ -80,6 +80,7 @@ public class DBEmployeeType extends DBConnection {
                 employeeType.setDescript(resultSet.getString("descript"));
                 results.add(employeeType);
             }
+            statement.close();
             resultSet.close();
         } catch (SQLException e) {
             MessageUtils.showErrorMessage("ERROR al realizar la consulta..." + e.getMessage());

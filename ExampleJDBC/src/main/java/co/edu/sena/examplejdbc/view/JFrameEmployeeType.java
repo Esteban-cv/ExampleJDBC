@@ -12,12 +12,12 @@ import co.edu.sena.examplejdbc.utils.MessageUtils;
  *
  * @author Juan Alejandro
  */
-public class frame extends javax.swing.JFrame {
+public class JFrameEmployeeType extends javax.swing.JFrame {
 
     /**
      * Creates new form frame
      */
-    public frame() {
+    public JFrameEmployeeType() {
         initComponents();
     }
 
@@ -41,7 +41,7 @@ public class frame extends javax.swing.JFrame {
 
         jLabelDescript.setText("DESCRIPCION:");
 
-        jButtonAccept.setText("ACEPTAR");
+        jButtonAccept.setText("INSERTAR");
         jButtonAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAcceptActionPerformed(evt);
@@ -111,20 +111,21 @@ public class frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame().setVisible(true);
+                new JFrameEmployeeType().setVisible(true);
             }
         });
     }
