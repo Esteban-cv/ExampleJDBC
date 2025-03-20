@@ -6,7 +6,6 @@ package co.edu.sena.examplejdbc.test;
 
 import co.edu.sena.examplejdbc.bd.DBKey;
 import co.edu.sena.examplejdbc.model.Key;
-import java.util.List;
 
 /**
  * date : 13/03/2025

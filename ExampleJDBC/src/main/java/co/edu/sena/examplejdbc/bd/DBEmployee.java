@@ -74,7 +74,7 @@ public class DBEmployee extends DBConnection {
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("ERROR al eliminar tipo de empleado...");
+            MessageUtils.showErrorMessage("ERROR al eliminar tipo de empleado..." + e.getMessage());
         } finally {
             disconnect();
         }
