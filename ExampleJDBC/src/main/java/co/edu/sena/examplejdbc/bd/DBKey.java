@@ -15,29 +15,32 @@ import java.util.List;
 
 /**
  * Date: 13/03/2025
- * @author Esteban Colorado Vargas
- * objective: permite consultas y transacciones en la tabla employee_type
+ *
+ * @author Esteban Colorado Vargas objective: permite consultas y transacciones
+ * en la tabla employee_type
  */
-public class DBKey extends DBConnection{
-    public void insert(Key key){
+public class DBKey extends DBConnection {
+
+    public void insert(Key key) {
         try {
             connect();
-            String sql = "insert into `key` (name,room, count, observation) values(?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareCall(sql);
-            preparedStatement.setString(1,key.getName());
-            preparedStatement.setString(2,key.getRoom());
-            preparedStatement.setInt(3, 0);
-            preparedStatement.setString(4,key.getObservation());
+            String sql = "INSERT INTO `key` (`name`, `room`, `count`, `observation`) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, key.getName());
+            preparedStatement.setString(2, key.getRoom());
+            preparedStatement.setInt(3, key.getCount());
+            preparedStatement.setString(4, key.getObservation());
             preparedStatement.executeUpdate();
             preparedStatement.close();
+
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("ERROR al insertar llave..." + e.getMessage());
-        }
-        finally{
+            MessageUtils.showErrorMessage("Error al insertar llave." + e.getMessage());
+        } finally {
             disconnect();
         }
     }
-    public void update (Key key) {
+    
+    public void update(Key key) {
         try {
             connect();
             String sql = "UPDATE `key` SET name = ?, room = ?, count = ?, observation = ? WHERE id = ?"; // la clave primaria por lo general va en el where
@@ -51,13 +54,12 @@ public class DBKey extends DBConnection{
             stmt.close();
         } catch (SQLException e) {
             MessageUtils.showErrorMessage("ERROR al actualizar llave..." + e.getMessage());
-        }
-        finally{
+        } finally {
             disconnect();
         }
     }
-    
-    public void delete (int id) {
+
+    public void delete(int id) {
         try {
             connect();
             String sql = "delete from `key` where id = ?";
@@ -68,21 +70,20 @@ public class DBKey extends DBConnection{
         } catch (SQLException e) {
             MessageUtils.showErrorMessage("ERROR al intentar eliminar a un usuario..."
                     + e.getMessage());
-        }
-        finally {
+        } finally {
             disconnect();
         }
-    } 
-    
-    public List<Key> findAll () {
+    }
+
+    public List<Key> findAll() {
         List<Key> results = new ArrayList<>();
         try {
             connect();
             String sql = "select * from `key`";
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            
-            while (resultSet.next()) {                
+
+            while (resultSet.next()) {
                 Key key = new Key();
                 key.setId(resultSet.getInt("id"));
                 key.setName(resultSet.getString("name"));
@@ -94,16 +95,15 @@ public class DBKey extends DBConnection{
             statement.close();
             resultSet.close();
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("ERROR al realizar la consulta..." 
+            MessageUtils.showErrorMessage("ERROR al realizar la consulta..."
                     + e.getMessage());
-        }
-        finally {
+        } finally {
             disconnect();
         }
         return results;
     }
-    
-    public Key findById (int id) {
+
+    public Key findById(int id) {
         Key key = null;
         try {
             connect();
@@ -111,8 +111,8 @@ public class DBKey extends DBConnection{
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
-            
-            if (resultSet.next()){
+
+            if (resultSet.next()) {
                 key = new Key();
                 key.setId(resultSet.getInt("id"));
                 key.setName(resultSet.getString("name"));
@@ -123,13 +123,12 @@ public class DBKey extends DBConnection{
             resultSet.close();
             stmt.close();
         } catch (SQLException e) {
-            MessageUtils.showErrorMessage("ERROR al realizar la consulta por id..." 
+            MessageUtils.showErrorMessage("ERROR al realizar la consulta por id..."
                     + e.getMessage());
-        }
-        finally {
+        } finally {
             disconnect();
         }
         return key;
-    
+
     }
 }

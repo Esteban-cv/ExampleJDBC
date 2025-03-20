@@ -28,24 +28,24 @@ public class TestKey {
         //dBKey.update(key);
         // ELIMINAR
         //dBKey.delete(5);
-        List<Key> listKey = dBKey.findAll();
-        for (Key e : listKey) {
-            System.out.println("id: " + e.getId() 
-                    + " / Nombre: " + e.getName()
-                    + " / Sala: " + e.getRoom()
-                    + " / Conteo: " + e.getCount()
-                    + " / Observación: " + e.getObservation());
-        }
+        //List<Key> listKey = dBKey.findAll();
+        //for (Key e : listKey) {
+        //    System.out.println("id: " + e.getId() 
+        //            + " / Nombre: " + e.getName()
+        //            + " / Sala: " + e.getRoom()
+        //            + " / Conteo: " + e.getCount()
+        //            + " / Observación: " + e.getObservation());
+        //}
         
-        System.out.println("*********************************************");
+        //System.out.println("*********************************************");
         
-        Key key1 = dBKey.findById(4);
-        if (key1 != null){
-            System.out.println("id: " + key1.getId() 
-                    + " / Nombre: " + key1.getName()
-                    + " / Sala: " + key1.getRoom()
-                    + " / Conteo: " + key1.getCount()
-                    + " / Observación: " + key1.getObservation());
-        }
+        //Key key1 = dBKey.findById(4);
+        //if (key1 != null){
+        //    System.out.println("id: " + key1.getId() 
+        //            + " / Nombre: " + key1.getName()
+        //            + " / Sala: " + key1.getRoom()
+        //          + " / Conteo: " + key1.getCount()
+        //          + " / Observación: " + key1.getObservation());
+        //}
     }
 }
