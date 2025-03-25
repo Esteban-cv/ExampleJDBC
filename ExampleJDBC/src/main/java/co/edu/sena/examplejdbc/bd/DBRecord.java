@@ -100,6 +100,7 @@ public class DBRecord extends DBConnection {
                 // FK
                 Key key = dBKey.findById(resultSet.getInt("key_id"));
                 record.setKey(key);
+                record.setStatus(resultSet.getString("status"));
                 results.add(record);
             }
             stmt.close();
@@ -129,7 +130,6 @@ public class DBRecord extends DBConnection {
                 record.setStart_time(resultSet.getString("start_time"));
                 record.setEnd_time(resultSet.getString("end_time"));
                 // FK
-                DBEmployee dBEmployee1 = new DBEmployee();
                 Employee employee = dBEmployee.findById(resultSet.getLong("employee_id")); 
                 record.setEmployeeId(employee); 
                 // FK

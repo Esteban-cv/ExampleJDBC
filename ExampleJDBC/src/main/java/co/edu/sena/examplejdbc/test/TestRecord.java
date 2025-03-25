@@ -29,36 +29,36 @@ public class TestRecord {
         //dBRecord.insert(record);
         
         //Actualizar
-//        record = dBRecord.findById(9);
-//        record.setEnd_time("13:00:00");
-//        dBRecord.update(record);
+        record = dBRecord.findById(8);
+        record.setEnd_time("13:00:00");
+        dBRecord.update(record);
 
         //ELIMINAR
         //dBRecord.delete(9);
         
         //Encontrar todos
-        List<Record> records = dBRecord.findAll();
-        for (Record e : records) {
-            System.out.println("id: " + e.getId()+ 
-                                " / Fecha Registro: " + e.getDate_Record()+ 
-                                " / Hora inicio: " + e.getStart_time() + 
-                                " / Hora final: " + e.getEnd_time() + 
-                                " / Id Empleado: " + e.getEmployeeId().getDocument() +
-                                " / Id Llave: " + e.getKey().getId() + 
-                                " / Estado: " + e.getStatus());
-        }
-        
-        System.out.println("*******************************************************");
-        
-        //Encontrar por id
-        Record record2 = dBRecord.findById(8);
-        System.out.println( "id: " + record2.getId()+ 
-                            " / Fecha Registro: " + record2.getDate_Record()+ 
-                            " / Hora inicio: " + record2.getStart_time() + 
-                            " / Hora final: " + record2.getEnd_time() + 
-                            " / Id Empleado: " + record2.getEmployeeId().getDocument() +
-                            " / Id Llave: " + record2.getKey().getId() + 
-                            " / Estado: " + record2.getStatus());
-        
+//        List<Record> records = dBRecord.findAll();
+//        for (Record e : records) {
+//            System.out.println("id: " + e.getId()+ 
+//                                " / Fecha Registro: " + e.getDate_Record()+ 
+//                                " / Hora inicio: " + e.getStart_time() + 
+//                                " / Hora final: " + e.getEnd_time() + 
+//                                " / Id Empleado: " + e.getEmployeeId().getDocument() +
+//                                " / Id Llave: " + e.getKey().getId() + 
+//                                " / Estado: " + e.getStatus());
+//        }
+//        
+//        System.out.println("*******************************************************");
+//        
+//        //Encontrar por id
+//        Record record2 = dBRecord.findById(8);
+//        System.out.println( "id: " + record2.getId()+ 
+//                            " / Fecha Registro: " + record2.getDate_Record()+ 
+//                            " / Hora inicio: " + record2.getStart_time() + 
+//                            " / Hora final: " + record2.getEnd_time() + 
+//                            " / Id Empleado: " + record2.getEmployeeId().getDocument() +
+//                            " / Id Llave: " + record2.getKey().getId() + 
+//                            " / Estado: " + record2.getStatus());
+//        
     }
 }
