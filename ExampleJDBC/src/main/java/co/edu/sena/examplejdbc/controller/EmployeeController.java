@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * date: 25/03/2025
- *
  * @author Esteban Colorado Vargas objetivo: implementar la interface para
  * controlar el modelo employee
  */
@@ -58,12 +57,12 @@ public class EmployeeController implements IEmployeeController {
         if ("".equals(employee.getFullName())) {
             throw new Exception("el nombre es obligatorio...");
         }
-        if ("".equals(employee.getAddress())) {
-            throw new Exception("la direccion es obligatoria...");
-        }
-        if ("".equals(employee.getPhone())) {
-            throw new Exception("El telefono es obligatorio...");
-        }
+//        if ("".equals(employee.getAddress())) {
+//            throw new Exception("la direccion es obligatoria...");
+//        }
+//        if ("".equals(employee.getPhone())) {
+//            throw new Exception("El telefono es obligatorio...");
+//        }
         //FK
         if (employee.getEmployeeType() == null) {
             throw new Exception("El tipo de empleado es obligatorio");

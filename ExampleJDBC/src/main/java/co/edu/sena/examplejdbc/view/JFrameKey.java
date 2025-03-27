@@ -4,7 +4,6 @@
  */
 package co.edu.sena.examplejdbc.view;
 
-
 import co.edu.sena.examplejdbc.bd.DBConnection;
 import co.edu.sena.examplejdbc.bd.DBKey;
 import co.edu.sena.examplejdbc.model.Key;
@@ -334,7 +333,6 @@ public class JFrameKey extends javax.swing.JFrame {
         // BOTON ELIMINAR
         try {
             DBKey dBKey = new DBKey();
-            Key key = new Key();
             int id = Integer.parseInt(jTextFieldId.getText());
             dBKey.delete(id);
             MessageUtils.showInfoMessage("La llave ha sido eliminada correctamente...");
@@ -346,41 +344,40 @@ public class JFrameKey extends javax.swing.JFrame {
 
     private void jButtonReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadActionPerformed
         // BOTÓN DE CONSULTA
-    DBConnection db = new DBConnection();
-    db.connect(); // Conectar antes de usar la BD
-    Connection conn = db.getConnection();
-    if (conn == null) {
-        MessageUtils.showErrorMessage("Error: No se pudo establecer la conexión con la base de datos.");
-        return;
-    }
-    DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("ID");
-    model.addColumn("Nombre");
-    model.addColumn("Sala");
-    model.addColumn("Cantidad");
-    model.addColumn("Observación");
-
-    // Usar try-with-resources para cerrar automáticamente `Statement` y `ResultSet`
-    try (Statement stmt = conn.createStatement();
-         ResultSet rs = stmt.executeQuery("SELECT * FROM `key`")) { // Ajusta el nombre real de la tabla
-
-        while (rs.next()) {
-            Object[] row = new Object[5];
-            row[0] = rs.getInt("id");
-            row[1] = rs.getString("name");
-            row[2] = rs.getString("room");
-            row[3] = rs.getInt("count");
-            row[4] = rs.getString("observation");
-            model.addRow(row);
+        DBConnection db = new DBConnection();
+        db.connect(); // Conectar antes de usar la BD
+        Connection conn = db.getConnection();
+        if (conn == null) {
+            MessageUtils.showErrorMessage("Error: No se pudo establecer la conexión con la base de datos.");
+            return;
         }
-        jTable1.setModel(model);
-        System.out.println("✅ Datos cargados correctamente en la tabla.");
-    } catch (SQLException e) {
-        MessageUtils.showErrorMessage("Error al cargar los datos: " + e.getMessage());
-        e.printStackTrace();
-    } finally {
-        db.disconnect(); // Asegurar que la conexión se cierre después de la consulta
-    }
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Sala");
+        model.addColumn("Cantidad");
+        model.addColumn("Observación");
+
+        // Usar try-with-resources para cerrar automáticamente `Statement` y `ResultSet`
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM `key`")) { // Ajusta el nombre real de la tabla
+
+            while (rs.next()) {
+                Object[] row = new Object[5];
+                row[0] = rs.getInt("id");
+                row[1] = rs.getString("name");
+                row[2] = rs.getString("room");
+                row[3] = rs.getInt("count");
+                row[4] = rs.getString("observation");
+                model.addRow(row);
+            }
+            jTable1.setModel(model);
+            System.out.println("✅ Datos cargados correctamente en la tabla.");
+        } catch (SQLException e) {
+            MessageUtils.showErrorMessage("Error al cargar los datos: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            db.disconnect(); // Asegurar que la conexión se cierre después de la consulta
+        }
     }//GEN-LAST:event_jButtonReadActionPerformed
 
     /**
@@ -417,7 +414,7 @@ public class JFrameKey extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void clear() {
         jTextFieldId.setText("");
         jTextFieldName.setText("");
@@ -425,8 +422,7 @@ public class JFrameKey extends javax.swing.JFrame {
         jTextFieldCount.setText("");
         jTextAreaObservation.setText("");
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDelete;

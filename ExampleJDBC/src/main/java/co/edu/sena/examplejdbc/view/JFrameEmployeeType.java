@@ -4,21 +4,28 @@
  */
 package co.edu.sena.examplejdbc.view;
 
-import co.edu.sena.examplejdbc.bd.DBEmployeeType;
+import co.edu.sena.examplejdbc.controller.EmployeeTypeController;
+import co.edu.sena.examplejdbc.controller.IEmployeeTypeController;
 import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Juan Alejandro
+ * @author Esteban Colorado Vargas
  */
 public class JFrameEmployeeType extends javax.swing.JFrame {
+
+    private IEmployeeTypeController employeeTypeController = new EmployeeTypeController();
 
     /**
      * Creates new form frame
      */
     public JFrameEmployeeType() {
         initComponents();
+        fillTable();
     }
 
     /**
@@ -30,69 +37,222 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabeltTitle = new javax.swing.JLabel();
-        jLabelDescript = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        jLabelId = new javax.swing.JLabel();
         jTextFieldDescript = new javax.swing.JTextField();
-        jButtonAccept = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonInsert = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonCleart = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableEmployeeType = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+
+        jLabeltTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabeltTitle.setForeground(new java.awt.Color(255, 255, 255));
+        jLabeltTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabeltTitle.setText("CREAR TIPO EMPLEADO");
 
-        jLabelDescript.setText("DESCRIPCION:");
+        jLabelId.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabelId.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelId.setText("ID");
 
-        jButtonAccept.setText("INSERTAR");
-        jButtonAccept.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("DESCRIPCION:");
+
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAcceptActionPerformed(evt);
+                jButtonUpdateActionPerformed(evt);
             }
         });
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonInsert.setText("INSERTAR");
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
+
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDelete.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+
+        jButtonCleart.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonCleart.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonCleart.setText("LIMPIAR");
+        jButtonCleart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCleartActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonInsert)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButtonUpdate))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelId)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCleart)
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(39, Short.MAX_VALUE))))
+            .addComponent(jLabeltTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabeltTitle)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelId)
+                    .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonInsert)
+                    .addComponent(jButtonUpdate)
+                    .addComponent(jButtonDelete)
+                    .addComponent(jButtonCleart))
+                .addGap(39, 39, 39))
+        );
+
+        jTableEmployeeType.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jTableEmployeeType.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTableEmployeeType.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableEmployeeTypeMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableEmployeeType);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabelDescript)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabeltTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAccept)
-                .addGap(125, 125, 125))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabeltTitle)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDescript)
-                    .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAccept)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcceptActionPerformed
-        // TODO add your handling code here:
-        DBEmployeeType dBEmployeeType = new DBEmployeeType();
-        EmployeeType employeeType = new EmployeeType();
-        employeeType.setDescript(jTextFieldDescript.getText());
-        dBEmployeeType.insert(employeeType);
-        MessageUtils.showInfoMessage("tipo de empleado creado exitosamente");
-    }//GEN-LAST:event_jButtonAcceptActionPerformed
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        // BOTON PARA INSERTAR
+        try {
+            EmployeeType employeeType = new EmployeeType();
+            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
+            employeeTypeController.insert(employeeType);
+            MessageUtils.showInfoMessage("empleado creado exitosamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al insertar..." +e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jButtonCleartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleartActionPerformed
+        // BOTON LIMPIAR
+        clear();
+    }//GEN-LAST:event_jButtonCleartActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // ACTULIZAR
+        try {
+            EmployeeType employeeType = new EmployeeType();
+            employeeType.setId(Integer.parseInt(jTextFieldId.getText()));
+            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
+            employeeTypeController.update(employeeType);
+            MessageUtils.showInfoMessage("empleado actualizado exitosamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al actualizar..." + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // BOTON PARA ELIMINAR
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"estas seguro de eliminar el resgistro?", 
+                    "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                employeeTypeController.delete(Integer.parseInt(jTextFieldId.getText()));
+                MessageUtils.showInfoMessage("empleado eliminado correctamente...");
+                fillTable();
+            }
+            clear();        
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar..." + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jTableEmployeeTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeeTypeMouseClicked
+        // EVENTO PARA LA TABLA
+        int rowSelected = jTableEmployeeType.getSelectedRow();
+        if(rowSelected != -1) {
+            String idSelected = jTableEmployeeType.getValueAt(rowSelected, 0).toString();
+            String descriptionSelected = jTableEmployeeType.getValueAt(rowSelected, 1).toString();
+            
+            jTextFieldId.setText(idSelected);
+            jTextFieldDescript.setText(descriptionSelected);
+            jButtonInsert.setEnabled(false);
+            jButtonDelete.setEnabled(true);
+            jButtonUpdate.setEnabled(true);
+        }
+    }//GEN-LAST:event_jTableEmployeeTypeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -130,10 +290,45 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         });
     }
 
+    public void clear() {
+        jTextFieldId.setText("");
+        jTextFieldDescript.setText("");
+        jButtonInsert.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jButtonUpdate.setEnabled(false);
+    }
+
+    public void fillTable() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jTableEmployeeType.setModel(model);
+            model.addColumn("id");
+            model.addColumn("Descripcion");
+
+            String[] rows = new String[2];
+            List<EmployeeType> types = employeeTypeController.findAll();
+            for (EmployeeType type : types) {
+                rows[0] = String.valueOf(type.getId());
+                rows[1] = type.getDescript();
+                model.addRow(rows);
+            }
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error" + e.getMessage());
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAccept;
-    private javax.swing.JLabel jLabelDescript;
+    private javax.swing.JButton jButtonCleart;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabeltTitle;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableEmployeeType;
     private javax.swing.JTextField jTextFieldDescript;
+    private javax.swing.JTextField jTextFieldId;
     // End of variables declaration//GEN-END:variables
 }
