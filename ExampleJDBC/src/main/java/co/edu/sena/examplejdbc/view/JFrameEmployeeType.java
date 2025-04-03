@@ -47,6 +47,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         jButtonInsert = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jButtonCleart = new javax.swing.JButton();
+        jLabelDescript = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmployeeType = new javax.swing.JTable();
 
@@ -103,11 +104,19 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             }
         });
 
+        jLabelDescript.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabelDescript.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDescript.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDescript.setText("Aqui  puedes insertar, actualizar, eliminar y consultar todo lo referente a la tabla empleado.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabeltTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -131,14 +140,19 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(39, Short.MAX_VALUE))))
-            .addComponent(jLabeltTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelDescript, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(14, 14, 14)
                 .addComponent(jLabeltTitle)
-                .addGap(29, 29, 29)
+                .addGap(7, 7, 7)
+                .addComponent(jLabelDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelId)
                     .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,6 +337,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelDescript;
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabeltTitle;
     private javax.swing.JPanel jPanel1;

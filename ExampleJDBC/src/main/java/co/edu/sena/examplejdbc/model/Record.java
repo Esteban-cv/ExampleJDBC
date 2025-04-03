@@ -86,4 +86,11 @@ public class Record {
     public void setStatus(String status) {
         this.status = status;
     } 
+
+    @Override
+    public String toString() {
+        return "" +key ;
+    }
+
+    
 }

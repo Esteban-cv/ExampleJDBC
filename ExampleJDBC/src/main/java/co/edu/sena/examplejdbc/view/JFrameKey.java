@@ -61,7 +61,7 @@ public class JFrameKey extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Key");
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
         jLabelTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));

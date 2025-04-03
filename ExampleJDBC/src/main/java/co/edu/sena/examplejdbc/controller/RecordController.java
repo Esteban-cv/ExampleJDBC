@@ -71,10 +71,7 @@ public class RecordController implements IRecordController {
         if ("".equals(record.getStatus())) {
             throw new Exception("El estado es obligatorio.");
         }
-        Record recordExists = dBR.findById(record.getId());
-        if (recordExists != null) {
-            throw new Exception("Ya existe un registro con ese id");
-        }
+        
         dBR.update(record);
     }
 
