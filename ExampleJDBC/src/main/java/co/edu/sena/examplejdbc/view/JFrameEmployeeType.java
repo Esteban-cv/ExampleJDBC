@@ -8,20 +8,23 @@ import co.edu.sena.examplejdbc.controller.EmployeeTypeController;
 import co.edu.sena.examplejdbc.controller.IEmployeeTypeController;
 import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * date:05/04/2025
  * @author Esteban Colorado Vargas
  */
 public class JFrameEmployeeType extends javax.swing.JFrame {
-
-    private IEmployeeTypeController employeeTypeController = new EmployeeTypeController();
+    
+    private final IEmployeeTypeController employeeTypeController = new EmployeeTypeController();
+    int xMouse;
+    int yMouse;
 
     /**
-     * Creates new form frame
+     * Creates new form JFrameEmployeeTypeModified
      */
     public JFrameEmployeeType() {
         initComponents();
@@ -37,135 +40,116 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelBackground = new javax.swing.JPanel();
         jLabeltTitle = new javax.swing.JLabel();
-        jTextFieldId = new javax.swing.JTextField();
+        jLabelDescript1 = new javax.swing.JLabel();
         jLabelId = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jTextFieldDescript = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonCleart = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
         jButtonInsert = new javax.swing.JButton();
-        jButtonDelete = new javax.swing.JButton();
-        jButtonCleart = new javax.swing.JButton();
-        jLabelDescript = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmployeeType = new javax.swing.JTable();
+        jPanelCloseWindow = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelBackground = new javax.swing.JLabel();
+        jPanelHeader = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanelBackground.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabeltTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabeltTitle.setFont(new java.awt.Font("Roboto Condensed", 1, 20)); // NOI18N
         jLabeltTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLabeltTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabeltTitle.setText("CREAR TIPO EMPLEADO");
+        jPanelBackground.add(jLabeltTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, -1));
 
-        jLabelId.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabelDescript1.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelDescript1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDescript1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDescript1.setText("Aqui  puedes insertar, actualizar, eliminar y consultar todo lo referente a la tabla empleado.");
+        jPanelBackground.add(jLabelDescript1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 770, -1));
+
+        jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jLabelId.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelId.setText("ID");
+        jLabelId.setText("ID:");
+        jPanelBackground.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("DESCRIPCION:");
+        jTextFieldId.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 180, -1));
 
-        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonUpdate.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonUpdate.setText("ACTUALIZAR");
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("DESCRIPCION:");
+        jPanelBackground.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
 
-        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonInsert.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonInsert.setText("INSERTAR");
-        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInsertActionPerformed(evt);
-            }
-        });
-
-        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonDelete.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonDelete.setText("ELIMINAR");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
+        jTextFieldDescript.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldDescript, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 180, -1));
 
         jButtonCleart.setBackground(new java.awt.Color(0, 204, 204));
-        jButtonCleart.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonCleart.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jButtonCleart.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCleart.setText("LIMPIAR");
+        jButtonCleart.setBorderPainted(false);
+        jButtonCleart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCleart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCleart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCleartActionPerformed(evt);
             }
         });
+        jPanelBackground.add(jButtonCleart, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, -1));
 
-        jLabelDescript.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabelDescript.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelDescript.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescript.setText("Aqui  puedes insertar, actualizar, eliminar y consultar todo lo referente a la tabla empleado.");
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBorderPainted(false);
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 120, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabeltTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonInsert)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButtonUpdate))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelId)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCleart)
-                        .addGap(40, 40, 40))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(39, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelDescript, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabeltTitle)
-                .addGap(7, 7, 7)
-                .addComponent(jLabelDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelId)
-                    .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldDescript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonInsert)
-                    .addComponent(jButtonUpdate)
-                    .addComponent(jButtonDelete)
-                    .addComponent(jButtonCleart))
-                .addGap(39, 39, 39))
-        );
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setAlignmentX(0.5F);
+        jButtonUpdate.setBorderPainted(false);
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 120, -1));
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 120, -1));
 
         jTableEmployeeType.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jTableEmployeeType.setModel(new javax.swing.table.DefaultTableModel(
@@ -183,44 +167,102 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableEmployeeType);
 
+        jPanelBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 750, 200));
+
+        jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("x");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCloseWindowLayout = new javax.swing.GroupLayout(jPanelCloseWindow);
+        jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
+        jPanelCloseWindowLayout.setHorizontalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelCloseWindowLayout.setVerticalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanelBackground.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/background para pestañas.png"))); // NOI18N
+        jPanelBackground.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 490));
+
+        jPanelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMouseDragged(evt);
+            }
+        });
+        jPanelHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelHeaderLayout = new javax.swing.GroupLayout(jPanelHeader);
+        jPanelHeader.setLayout(jPanelHeaderLayout);
+        jPanelHeaderLayout.setHorizontalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelHeaderLayout.setVerticalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanelBackground.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
-        // BOTON PARA INSERTAR
-        try {
-            EmployeeType employeeType = new EmployeeType();
-            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
-            employeeTypeController.insert(employeeType);
-            MessageUtils.showInfoMessage("empleado creado exitosamente...");
-            fillTable();
-            clear();
-        } catch (Exception e) {
-            MessageUtils.showErrorMessage("HUBO UN ERROR al insertar..." +e.getMessage());
-        }
-    }//GEN-LAST:event_jButtonInsertActionPerformed
-
     private void jButtonCleartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleartActionPerformed
         // BOTON LIMPIAR
         clear();
     }//GEN-LAST:event_jButtonCleartActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // BOTON PARA ELIMINAR
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"estas seguro de eliminar el resgistro?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                employeeTypeController.delete(Integer.parseInt(jTextFieldId.getText()));
+                MessageUtils.showInfoMessage("empleado eliminado correctamente...");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar..." + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // ACTULIZAR
@@ -237,21 +279,19 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // BOTON PARA ELIMINAR
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        // BOTON PARA INSERTAR
         try {
-            int option = JOptionPane.showConfirmDialog(rootPane,"estas seguro de eliminar el resgistro?", 
-                    "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-            if(option == JOptionPane.YES_OPTION){
-                employeeTypeController.delete(Integer.parseInt(jTextFieldId.getText()));
-                MessageUtils.showInfoMessage("empleado eliminado correctamente...");
-                fillTable();
-            }
-            clear();        
+            EmployeeType employeeType = new EmployeeType();
+            employeeType.setDescript(jTextFieldDescript.getText().toUpperCase());
+            employeeTypeController.insert(employeeType);
+            MessageUtils.showInfoMessage("empleado creado exitosamente...");
+            fillTable();
+            clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar..." + e.getMessage());
+            MessageUtils.showErrorMessage("HUBO UN ERROR al insertar..." +e.getMessage());
         }
-    }//GEN-LAST:event_jButtonDeleteActionPerformed
+    }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jTableEmployeeTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeeTypeMouseClicked
         // EVENTO PARA LA TABLA
@@ -259,7 +299,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
         if(rowSelected != -1) {
             String idSelected = jTableEmployeeType.getValueAt(rowSelected, 0).toString();
             String descriptionSelected = jTableEmployeeType.getValueAt(rowSelected, 1).toString();
-            
+
             jTextFieldId.setText(idSelected);
             jTextFieldDescript.setText(descriptionSelected);
             jButtonInsert.setEnabled(false);
@@ -267,6 +307,41 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             jButtonUpdate.setEnabled(true);
         }
     }//GEN-LAST:event_jTableEmployeeTypeMouseClicked
+
+    private void jPanelHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMousePressed
+        // EVENTO COMPLEMETNARIO PARA MOVER LA PESTAÑA
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanelHeaderMousePressed
+
+    private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
+        // EVENTO PARA MOVER LA PESTAÑA
+        int xPosition = evt.getXOnScreen();
+        int yPosition = evt.getYOnScreen();
+        
+        this.setLocation(xPosition - xMouse, yPosition - yMouse);
+    }//GEN-LAST:event_jPanelHeaderMouseDragged
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Estas seguro de salir?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
+        if(option == JOptionPane.YES_OPTION) {
+            new JFrameMenu().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // BOTON PARA EFECTO HOVER
+        jPanelCloseWindow.setBackground(Color.red);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        // BOTON PARA EFECTO HOVER DE SALIDA
+        jPanelCloseWindow.setBackground(Color.white);
+    }//GEN-LAST:event_jLabel1MouseExited
 
     /**
      * @param args the command line arguments
@@ -303,7 +378,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void clear() {
         jTextFieldId.setText("");
         jTextFieldDescript.setText("");
@@ -326,6 +401,9 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
                 rows[1] = type.getDescript();
                 model.addRow(rows);
             }
+            jButtonInsert.setEnabled(true);
+            jButtonUpdate.setEnabled(false);
+            jButtonDelete.setEnabled(false);
         } catch (Exception e) {
             MessageUtils.showErrorMessage("Ha ocurrido un error" + e.getMessage());
         }
@@ -337,10 +415,14 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelDescript;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelDescript1;
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabeltTitle;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JPanel jPanelCloseWindow;
+    private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEmployeeType;
     private javax.swing.JTextField jTextFieldDescript;

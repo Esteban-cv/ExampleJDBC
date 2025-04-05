@@ -6,25 +6,36 @@ package co.edu.sena.examplejdbc.view;
 
 import co.edu.sena.examplejdbc.bd.DBConnection;
 import co.edu.sena.examplejdbc.bd.DBKey;
+import co.edu.sena.examplejdbc.controller.IKeyController;
+import co.edu.sena.examplejdbc.controller.KeyController;
+import co.edu.sena.examplejdbc.model.Employee;
 import co.edu.sena.examplejdbc.model.Key;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Juan Alejandro
+ * date: 05/04/2025
+ * @author Esteban Colorado Vargas
  */
 public class JFrameKey extends javax.swing.JFrame {
+    
+    private final IKeyController keyController = new KeyController();
+    int xMouse;
+    int yMouse;
 
     /**
-     * Creates new form JFrameKey
+     * Creates new form JFrameKeyModified
      */
     public JFrameKey() {
         initComponents();
+        fillTable();
     }
 
     /**
@@ -36,249 +47,243 @@ public class JFrameKey extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelBackground = new javax.swing.JPanel();
+        jButtonCleart = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableKey = new javax.swing.JTable();
         jLabelTitle = new javax.swing.JLabel();
         jLabelDescript = new javax.swing.JLabel();
-        jTextFieldId = new javax.swing.JTextField();
         jLabelId = new javax.swing.JLabel();
-        jLabelName = new javax.swing.JLabel();
-        jLabelRoom = new javax.swing.JLabel();
-        jLabelCount = new javax.swing.JLabel();
-        jTextFieldName = new javax.swing.JTextField();
+        jTextFieldId = new javax.swing.JTextField();
         jTextFieldRoom = new javax.swing.JTextField();
+        jLabelRoom = new javax.swing.JLabel();
+        jLabelName = new javax.swing.JLabel();
+        jTextFieldName = new javax.swing.JTextField();
+        jLabelCount = new javax.swing.JLabel();
         jTextFieldCount = new javax.swing.JTextField();
-        jButtonInsert = new javax.swing.JButton();
-        jButtonUpdate = new javax.swing.JButton();
-        jButtonDelete = new javax.swing.JButton();
-        jButtonRead = new javax.swing.JButton();
         jLabelObservation = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaObservation = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jButtonInsert = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jPanelCloseWindow = new javax.swing.JPanel();
+        jLabelCloseWindow = new javax.swing.JLabel();
+        jLabelBackground = new javax.swing.JLabel();
+        jPanelHeader = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Key");
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanelBackground.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jButtonCleart.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonCleart.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jButtonCleart.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCleart.setText("LIMPIAR");
+        jButtonCleart.setBorderPainted(false);
+        jButtonCleart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCleart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCleartActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonCleart, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 120, -1));
+
+        jTableKey.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jTableKey.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTableKey.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableKeyMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableKey);
+
+        jPanelBackground.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 750, 130));
+
+        jLabelTitle.setFont(new java.awt.Font("Roboto Condensed", 1, 20)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("TABLA KEY");
+        jPanelBackground.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, -1));
 
-        jLabelDescript.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabelDescript.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jLabelDescript.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelDescript.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabelDescript.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDescript.setText("Aqui  puedes insertar, actualizar, eliminar y consultar todo lo referente a la tabla Key.");
+        jPanelBackground.add(jLabelDescript, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 90, 770, -1));
 
-        jLabelId.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jLabelId.setForeground(new java.awt.Color(255, 255, 255));
         jLabelId.setText("ID");
+        jPanelBackground.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
-        jLabelName.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelName.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelName.setText("Nombre");
+        jTextFieldId.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 200, -1));
 
-        jLabelRoom.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelRoom.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelRoom.setText("Sala:");
-
-        jLabelCount.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelCount.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelCount.setText("Cantidad:");
-
+        jTextFieldRoom.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jTextFieldRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldRoomActionPerformed(evt);
             }
         });
+        jPanelBackground.add(jTextFieldRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 200, -1));
 
+        jLabelRoom.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelRoom.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelRoom.setText("Sala:");
+        jPanelBackground.add(jLabelRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
+
+        jLabelName.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelName.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelName.setText("Nombre");
+        jPanelBackground.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+
+        jTextFieldName.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 200, -1));
+
+        jLabelCount.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelCount.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCount.setText("Cantidad:");
+        jPanelBackground.add(jLabelCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
+
+        jTextFieldCount.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
         jTextFieldCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCountActionPerformed(evt);
             }
         });
+        jPanelBackground.add(jTextFieldCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 200, -1));
 
-        jButtonInsert.setBackground(new java.awt.Color(0, 153, 255));
-        jButtonInsert.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabelObservation.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelObservation.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelObservation.setText("Observacion:");
+        jPanelBackground.add(jLabelObservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+
+        jTextAreaObservation.setColumns(20);
+        jTextAreaObservation.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jTextAreaObservation.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaObservation);
+
+        jPanelBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 610, 50));
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
             }
         });
+        jPanelBackground.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 120, -1));
 
-        jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonUpdate.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setBorderPainted(false);
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
             }
         });
+        jPanelBackground.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 120, -1));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 0, 0));
-        jButtonDelete.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBorderPainted(false);
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
             }
         });
+        jPanelBackground.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 120, -1));
 
-        jButtonRead.setBackground(new java.awt.Color(102, 0, 102));
-        jButtonRead.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonRead.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRead.setText("CONSULTAR");
-        jButtonRead.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReadActionPerformed(evt);
+        jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabelCloseWindow.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCloseWindow.setText("x");
+        jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseExited(evt);
             }
         });
 
-        jLabelObservation.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelObservation.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelObservation.setText("Observacion:");
-
-        jTextAreaObservation.setColumns(20);
-        jTextAreaObservation.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaObservation);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelObservation)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelName)
-                                    .addComponent(jLabelId))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldId))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabelRoom)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabelCount)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldCount, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(39, 39, 39))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDescript)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jButtonInsert)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonDelete)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonRead)))
-                .addGap(0, 0, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelCloseWindowLayout = new javax.swing.GroupLayout(jPanelCloseWindow);
+        jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
+        jPanelCloseWindowLayout.setHorizontalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabelTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelId)
-                            .addComponent(jLabelRoom)
-                            .addComponent(jTextFieldRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelName)
-                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCount)
-                    .addComponent(jTextFieldCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addComponent(jLabelObservation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonUpdate)
-                    .addComponent(jButtonInsert)
-                    .addComponent(jButtonDelete)
-                    .addComponent(jButtonRead))
-                .addContainerGap(74, Short.MAX_VALUE))
+        jPanelCloseWindowLayout.setVerticalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelBackground.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/background para pestañas.png"))); // NOI18N
+        jPanelBackground.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 490));
+
+        jPanelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMouseDragged(evt);
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        });
+        jPanelHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout jPanelHeaderLayout = new javax.swing.GroupLayout(jPanelHeader);
+        jPanelHeader.setLayout(jPanelHeaderLayout);
+        jPanelHeaderLayout.setHorizontalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+        jPanelHeaderLayout.setVerticalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
+
+        jPanelBackground.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -288,6 +293,28 @@ public class JFrameKey extends javax.swing.JFrame {
     private void jTextFieldRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRoomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldRoomActionPerformed
+
+    private void jTextFieldCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCountActionPerformed
+
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        // BOTON PARA INSERTAR
+        try {
+            DBKey dbkey = new DBKey();
+            Key key = new Key();
+            key.setName(jTextFieldName.getText().toUpperCase());
+            key.setRoom(jTextFieldRoom.getText());
+            key.setCount(Integer.parseInt(jTextFieldCount.getText()));
+            key.setObservation(jTextAreaObservation.getText());
+            dbkey.insert(key);
+            MessageUtils.showInfoMessage("Llave creada exitosamente...");
+            clear();
+            fillTable();
+        } catch (NumberFormatException numberFormatException) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR...");
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // BOTON ACTUALIZAR
@@ -302,32 +329,11 @@ public class JFrameKey extends javax.swing.JFrame {
             dbkey.update(key);
             MessageUtils.showInfoMessage("Llave actualizada exitosamente...");
             clear();
+            fillTable();
         } catch (NumberFormatException numberFormatException) {
             MessageUtils.showErrorMessage("HUBO UN ERROR...");
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
-
-    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
-        // BOTON PARA INSERTAR
-        try {
-            DBKey dbkey = new DBKey();
-            Key key = new Key();
-            key.setId(Integer.parseInt(jTextFieldId.getText()));
-            key.setName(jTextFieldName.getText());
-            key.setRoom(jTextFieldRoom.getText());
-            key.setCount(Integer.parseInt(jTextFieldCount.getText()));
-            key.setObservation(jTextAreaObservation.getText());
-            dbkey.insert(key);
-            MessageUtils.showInfoMessage("Llave creada exitosamente...");
-            clear();
-        } catch (NumberFormatException numberFormatException) {
-            MessageUtils.showErrorMessage("HUBO UN ERROR...");
-        }
-    }//GEN-LAST:event_jButtonInsertActionPerformed
-
-    private void jTextFieldCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCountActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON ELIMINAR
@@ -337,48 +343,73 @@ public class JFrameKey extends javax.swing.JFrame {
             dBKey.delete(id);
             MessageUtils.showInfoMessage("La llave ha sido eliminada correctamente...");
             clear();
+            fillTable();
         } catch (NumberFormatException numberFormatException) {
             MessageUtils.showErrorMessage("ERROR al eliminar llave...");
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    private void jButtonReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReadActionPerformed
-        // BOTÓN DE CONSULTA
-        DBConnection db = new DBConnection();
-        db.connect(); // Conectar antes de usar la BD
-        Connection conn = db.getConnection();
-        if (conn == null) {
-            MessageUtils.showErrorMessage("Error: No se pudo establecer la conexión con la base de datos.");
-            return;
-        }
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("ID");
-        model.addColumn("Nombre");
-        model.addColumn("Sala");
-        model.addColumn("Cantidad");
-        model.addColumn("Observación");
+    private void jButtonCleartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleartActionPerformed
+        // BOTON LIMPIAR
+        clear();
+    }//GEN-LAST:event_jButtonCleartActionPerformed
 
-        // Usar try-with-resources para cerrar automáticamente `Statement` y `ResultSet`
-        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM `key`")) { // Ajusta el nombre real de la tabla
+    private void jPanelHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMousePressed
+        // EVENTO COMPLEMETNARIO PARA MOVER LA PESTAÑA
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanelHeaderMousePressed
 
-            while (rs.next()) {
-                Object[] row = new Object[5];
-                row[0] = rs.getInt("id");
-                row[1] = rs.getString("name");
-                row[2] = rs.getString("room");
-                row[3] = rs.getInt("count");
-                row[4] = rs.getString("observation");
-                model.addRow(row);
+    private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
+        // EVENTO PARA MOVER LA PESTAÑA
+        int xPosition = evt.getXOnScreen();
+        int yPosition = evt.getYOnScreen();
+        
+        this.setLocation(xPosition - xMouse, yPosition - yMouse);
+    }//GEN-LAST:event_jPanelHeaderMouseDragged
+
+    private void jTableKeyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKeyMouseClicked
+        // // SELECCIONAR REGISTROS DE LA TABLA
+        int rowSelected = jTableKey.getSelectedRow();
+        if (rowSelected != -1) {
+            int idSelected = Integer.parseInt(jTableKey.getValueAt(rowSelected, 0).toString());
+            try {
+                Key key = keyController.findById(idSelected);
+                jTextFieldId.setText(String.valueOf(idSelected));
+                jTextFieldName.setText(key.getName());
+                jTextFieldRoom.setText(key.getRoom());
+                jTextFieldCount.setText(String.valueOf(key.getCount()));
+                jTextAreaObservation.setText(key.getObservation());
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
+                    + e.getMessage());
             }
-            jTable1.setModel(model);
-            System.out.println("✅ Datos cargados correctamente en la tabla.");
-        } catch (SQLException e) {
-            MessageUtils.showErrorMessage("Error al cargar los datos: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            db.disconnect(); // Asegurar que la conexión se cierre después de la consulta
         }
-    }//GEN-LAST:event_jButtonReadActionPerformed
+        jButtonInsert.setEnabled(false);
+        jButtonDelete.setEnabled(true);
+        jButtonUpdate.setEnabled(true);
+    }//GEN-LAST:event_jTableKeyMouseClicked
+
+    private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Estas seguro de salir?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
+        if(option == JOptionPane.YES_OPTION) {
+            new JFrameMenu().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jLabelCloseWindowMouseClicked
+
+    private void jLabelCloseWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseEntered
+        // BOTON EFECTO HOVER
+        jPanelCloseWindow.setBackground(Color.RED);
+    }//GEN-LAST:event_jLabelCloseWindowMouseEntered
+
+    private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
+        // TBOTON PARA EFECTO HOVER DE SALIDA
+        jPanelCloseWindow.setBackground(Color.white);
+    }//GEN-LAST:event_jLabelCloseWindowMouseExited
 
     /**
      * @param args the command line arguments
@@ -406,6 +437,7 @@ public class JFrameKey extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFrameKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -414,21 +446,54 @@ public class JFrameKey extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void clear() {
         jTextFieldId.setText("");
         jTextFieldName.setText("");
-        jTextFieldRoom.setText("");
         jTextFieldCount.setText("");
+        jTextFieldRoom.setText("");
         jTextAreaObservation.setText("");
+        jButtonInsert.setEnabled(true);
+        jButtonUpdate.setEnabled(false);
+        jButtonDelete.setEnabled(false);
+    }
+    
+    public void fillTable() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jTableKey.setModel(model);
+            model.addColumn("ID");
+            model.addColumn("NOMBRE");
+            model.addColumn("SALA");
+            model.addColumn("CANTIDAD");
+            model.addColumn("OBSERVACION");
+
+            String[] rows = new String[5];
+            List<Key> keys = keyController.findAll();
+            for (Key key : keys) {
+                rows[0] = String.valueOf(key.getId());
+                rows[1] = key.getName();
+                rows[2] = key.getRoom();
+                rows[3] = String.valueOf(key.getCount());
+                rows[4] = key.getObservation();
+                model.addRow(rows);
+            }
+            jButtonInsert.setEnabled(true);
+            jButtonUpdate.setEnabled(false);
+            jButtonDelete.setEnabled(false);
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al llenar la tabla..."
+                    + e.getMessage());
+        }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCleart;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
-    private javax.swing.JButton jButtonRead;
     private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelCloseWindow;
     private javax.swing.JLabel jLabelCount;
     private javax.swing.JLabel jLabelDescript;
     private javax.swing.JLabel jLabelId;
@@ -436,11 +501,12 @@ public class JFrameKey extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelObservation;
     private javax.swing.JLabel jLabelRoom;
     private javax.swing.JLabel jLabelTitle;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JPanel jPanelCloseWindow;
+    private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableKey;
     private javax.swing.JTextArea jTextAreaObservation;
     private javax.swing.JTextField jTextFieldCount;
     private javax.swing.JTextField jTextFieldId;

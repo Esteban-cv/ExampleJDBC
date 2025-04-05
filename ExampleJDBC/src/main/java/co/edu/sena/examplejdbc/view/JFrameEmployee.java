@@ -13,25 +13,27 @@ import co.edu.sena.examplejdbc.model.EmployeeType;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
- *date: 03/04/2025
+ * date: 05/04/2025
  * @author Esteban Colorado Vargas
- * objetivo: crear la vista para employee
  */
 public class JFrameEmployee extends javax.swing.JFrame {
     private final IEmployeeController employeeController = new EmployeeController();
     private final IEmployeeTypeController employeeTypeController = new EmployeeTypeController();
-
+    int xMouse;
+    int yMouse;
+    
     /**
-     * Creates new form JFrameEmployee
+     * Creates new form JFrameEmployeeModified
      */
     public JFrameEmployee() {
         initComponents();
-        fillComboBox();
         fillTable();
+        fillComboBox();
     }
 
     /**
@@ -43,178 +45,39 @@ public class JFrameEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
-        jTextFieldDocument = new javax.swing.JTextField();
+        jPanelBackground = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableEmployee = new javax.swing.JTable();
         jLabelDocument = new javax.swing.JLabel();
-        jLabeltTitle = new javax.swing.JLabel();
+        jTextFieldDocument = new javax.swing.JTextField();
+        jTextFieldFullName = new javax.swing.JTextField();
         jLabelFullName = new javax.swing.JLabel();
+        jLabelAddress = new javax.swing.JLabel();
         jTextFieldAddress = new javax.swing.JTextField();
         jLabelPhone = new javax.swing.JLabel();
-        jLabelAddress = new javax.swing.JLabel();
-        jTextFieldPhone = new javax.swing.JTextField();
-        jTextFieldFullName = new javax.swing.JTextField();
-        jComboBoxType_id = new javax.swing.JComboBox<>();
         jLabelType_id = new javax.swing.JLabel();
+        jComboBoxType_id = new javax.swing.JComboBox<>();
+        jTextFieldPhone = new javax.swing.JTextField();
         jButtonInsert = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jButtonCleart = new javax.swing.JButton();
         jLabelDescript = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableEmployee = new javax.swing.JTable();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabeltTitle = new javax.swing.JLabel();
+        jPanelCloseWindow = new javax.swing.JPanel();
+        jLabelCloseWindow = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanelHeader = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Empleado");
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanelBackground.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelDocument.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelDocument.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelDocument.setText("DOCUMENTO:");
-
-        jLabeltTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabeltTitle.setForeground(new java.awt.Color(255, 255, 255));
-        jLabeltTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabeltTitle.setText("CREAR EMPLEADO");
-
-        jLabelFullName.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelFullName.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelFullName.setText("NOMBRE COMPLETO:");
-
-        jLabelPhone.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelPhone.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPhone.setText("TELEFONO:");
-
-        jLabelAddress.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelAddress.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelAddress.setText("DIRECCION:");
-
-        jLabelType_id.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabelType_id.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelType_id.setText("TIPO DE EMPLEADO:");
-
-        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonInsert.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonInsert.setText("INSERTAR");
-        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInsertActionPerformed(evt);
-            }
-        });
-
-        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonUpdate.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonUpdate.setText("ACTUALIZAR");
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
-            }
-        });
-
-        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonDelete.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonDelete.setText("ELIMINAR");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
-
-        jButtonCleart.setBackground(new java.awt.Color(0, 204, 204));
-        jButtonCleart.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jButtonCleart.setText("LIMPIAR");
-        jButtonCleart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCleartActionPerformed(evt);
-            }
-        });
-
-        jLabelDescript.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabelDescript.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelDescript.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescript.setText("Aqui  puedes insertar, actualizar, eliminar y consultar todo lo referente a la tabla empleado.");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDocument)
-                            .addComponent(jLabelFullName)
-                            .addComponent(jLabelPhone)
-                            .addComponent(jLabelAddress)
-                            .addComponent(jLabelType_id))
-                        .addGap(86, 86, 86)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldAddress)
-                            .addComponent(jTextFieldPhone)
-                            .addComponent(jTextFieldDocument)
-                            .addComponent(jTextFieldFullName)
-                            .addComponent(jComboBoxType_id, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(83, 83, 83))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabeltTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelDescript, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jButtonInsert)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonDelete)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCleart)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabeltTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelDescript, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDocument, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDocument))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFullName))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAddress))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPhone))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxType_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelType_id))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonInsert)
-                    .addComponent(jButtonUpdate)
-                    .addComponent(jButtonDelete)
-                    .addComponent(jButtonCleart))
-                .addGap(28, 28, 28))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-
+        jTableEmployee.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTableEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -230,41 +93,223 @@ public class JFrameEmployee extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableEmployee);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanelBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 750, 170));
+
+        jLabelDocument.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelDocument.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDocument.setText("DOCUMENTO:");
+        jPanelBackground.add(jLabelDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        jTextFieldDocument.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 200, -1));
+
+        jTextFieldFullName.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 200, -1));
+
+        jLabelFullName.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelFullName.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelFullName.setText("NOMBRE COMPLETO:");
+        jPanelBackground.add(jLabelFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jLabelAddress.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelAddress.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAddress.setText("DIRECCION:");
+        jPanelBackground.add(jLabelAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
+
+        jTextFieldAddress.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 200, -1));
+
+        jLabelPhone.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelPhone.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPhone.setText("TELEFONO:");
+        jPanelBackground.add(jLabelPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, -1));
+
+        jLabelType_id.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelType_id.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelType_id.setText("TIPO DE EMPLEADO:");
+        jPanelBackground.add(jLabelType_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+
+        jComboBoxType_id.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jComboBoxType_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 200, -1));
+
+        jTextFieldPhone.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jPanelBackground.add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 200, -1));
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 120, -1));
+
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setBorderPainted(false);
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 120, -1));
+
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDelete.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBorderPainted(false);
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 120, -1));
+
+        jButtonCleart.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonCleart.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButtonCleart.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCleart.setText("LIMPIAR");
+        jButtonCleart.setBorderPainted(false);
+        jButtonCleart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCleart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCleartActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonCleart, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 120, -1));
+
+        jLabelDescript.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabelDescript.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDescript.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDescript.setText("Aqui  puedes insertar, actualizar, eliminar y consultar todo lo referente a la tabla empleado.");
+        jPanelBackground.add(jLabelDescript, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 770, -1));
+
+        jLabeltTitle.setFont(new java.awt.Font("Roboto Condensed", 1, 20)); // NOI18N
+        jLabeltTitle.setForeground(new java.awt.Color(255, 255, 255));
+        jLabeltTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabeltTitle.setText("CREAR EMPLEADO");
+        jPanelBackground.add(jLabeltTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, -1));
+
+        jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabelCloseWindow.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCloseWindow.setText("x");
+        jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCloseWindowLayout = new javax.swing.GroupLayout(jPanelCloseWindow);
+        jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
+        jPanelCloseWindowLayout.setHorizontalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+        jPanelCloseWindowLayout.setVerticalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
+
+        jPanelBackground.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/background para pestañas.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(770, 490));
+        jLabel1.setMinimumSize(new java.awt.Dimension(770, 490));
+        jPanelBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 490));
+
+        jPanelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMouseDragged(evt);
+            }
+        });
+        jPanelHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelHeaderLayout = new javax.swing.GroupLayout(jPanelHeader);
+        jPanelHeader.setLayout(jPanelHeaderLayout);
+        jPanelHeaderLayout.setHorizontalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+        jPanelHeaderLayout.setVerticalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanelBackground.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
+        // EVENTO PARA MOVER LA PESTAÑA
+        int xPosition = evt.getXOnScreen();
+        int yPosition = evt.getYOnScreen();
+        
+        this.setLocation(xPosition - xMouse, yPosition - yMouse);
+    }//GEN-LAST:event_jPanelHeaderMouseDragged
+
+    private void jPanelHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMousePressed
+        // EVENTO COMPLEMETNARIO PARA MOVER LA PESTAÑA
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanelHeaderMousePressed
+
+    private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Estas seguro de salir?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
+        if(option == JOptionPane.YES_OPTION) {
+            new JFrameMenu().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jLabelCloseWindowMouseClicked
+
+    private void jLabelCloseWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseEntered
+        // BOTON EFECTO HOVER
+        jPanelCloseWindow.setBackground(Color.RED);
+    }//GEN-LAST:event_jLabelCloseWindowMouseEntered
+
+    private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
+        // TBOTON PARA EFECTO HOVER DE SALIDA
+        jPanelCloseWindow.setBackground(Color.white);
+    }//GEN-LAST:event_jLabelCloseWindowMouseExited
 
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
         // BOTON PARA INSERTAR
@@ -281,7 +326,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
             clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage("Ha ocurrido un error al insertar el usuario..."
-                    + e.getMessage());
+                + e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
@@ -300,21 +345,21 @@ public class JFrameEmployee extends javax.swing.JFrame {
             clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage("Ha ocurrido un error al insertar el usuario..."
-                    + e.getMessage());
+                + e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON PARA ELIMINAR
         try {
-            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?", 
-                    "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
             if(option == JOptionPane.YES_OPTION){
                 employeeController.delete(Long.valueOf(jTextFieldDocument.getText()));
                 MessageUtils.showInfoMessage("Empleado eliminado correctamente...");
                 fillTable();
             }
-            clear();        
+            clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar..." + e.getMessage());
         }
@@ -329,7 +374,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
         // EVENTO PARA EL CLICK EN LA TABLA
         int rowSelected = jTableEmployee.getSelectedRow();
         if (rowSelected != -1) {
-            Long documentSelected = Long.parseLong(jTableEmployee.getValueAt(rowSelected, 0).toString());
+            Long documentSelected = Long.valueOf(jTableEmployee.getValueAt(rowSelected, 0).toString());
             try {
                 Employee employee = employeeController.findById(documentSelected);
                 jTextFieldDocument.setText(String.valueOf(documentSelected));
@@ -338,9 +383,9 @@ public class JFrameEmployee extends javax.swing.JFrame {
                 jTextFieldPhone.setText(employee.getPhone());
                 jComboBoxType_id.getModel().setSelectedItem(employee.getEmployeeType());
             } catch (Exception e) {
-                MessageUtils.showErrorMessage("ERROR al usar el evento de click" 
-                        + e.getMessage());
-            } 
+                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
+                    + e.getMessage());
+            }
         }
         jButtonInsert.setEnabled(false);
         jButtonDelete.setEnabled(true);
@@ -373,6 +418,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFrameEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -381,18 +427,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
             }
         });
     }
-
-    public void clear() {
-        jTextFieldDocument.setText("");
-        jTextFieldFullName.setText("");
-        jTextFieldAddress.setText("");
-        jTextFieldPhone.setText("");
-        jComboBoxType_id.setSelectedIndex(0);
-        jButtonInsert.setEnabled(true);
-        jButtonDelete.setEnabled(false);
-        jButtonUpdate.setEnabled(false);
-    }
-
+    
     public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
@@ -417,7 +452,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
                     + e.getMessage());
         }
     }
-
+    
     private void fillComboBox() {
         try {
             List<EmployeeType> allTypes = employeeTypeController.findAll();
@@ -429,23 +464,36 @@ public class JFrameEmployee extends javax.swing.JFrame {
             MessageUtils.showErrorMessage("Ha ocurrido Error al llenar el ComboBox: " + e.getMessage());
         }
     }
+    
+    public void clear() {
+        jTextFieldDocument.setText("");
+        jTextFieldFullName.setText("");
+        jTextFieldAddress.setText("");
+        jTextFieldPhone.setText("");
+        jComboBoxType_id.setSelectedIndex(0);
+        jButtonInsert.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jButtonUpdate.setEnabled(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCleart;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxType_id;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAddress;
+    private javax.swing.JLabel jLabelCloseWindow;
     private javax.swing.JLabel jLabelDescript;
     private javax.swing.JLabel jLabelDocument;
     private javax.swing.JLabel jLabelFullName;
     private javax.swing.JLabel jLabelPhone;
     private javax.swing.JLabel jLabelType_id;
     private javax.swing.JLabel jLabeltTitle;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JPanel jPanelCloseWindow;
+    private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEmployee;
     private javax.swing.JTextField jTextFieldAddress;

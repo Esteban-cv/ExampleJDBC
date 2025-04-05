@@ -5,9 +5,7 @@
 package co.edu.sena.examplejdbc.view;
 
 import co.edu.sena.examplejdbc.controller.EmployeeController;
-import co.edu.sena.examplejdbc.controller.EmployeeTypeController;
 import co.edu.sena.examplejdbc.controller.IEmployeeController;
-import co.edu.sena.examplejdbc.controller.IEmployeeTypeController;
 import co.edu.sena.examplejdbc.controller.IKeyController;
 import co.edu.sena.examplejdbc.controller.IRecordController;
 import co.edu.sena.examplejdbc.controller.KeyController;
@@ -82,7 +80,7 @@ public class JFrameRecord extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 62, 139));
 
         jLabeltTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabeltTitle.setText("CREAR REGISTRO");
@@ -119,6 +117,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jButtonInsert.setText("INSERTAR");
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonInsert.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
@@ -128,6 +127,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jButtonUpdate.setText("ACTUALIZAR");
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -137,6 +137,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jButtonDelete.setText("ELIMINAR");
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
@@ -146,6 +147,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jButtonCleart.setText("LIMPIAR");
         jButtonCleart.setBackground(new java.awt.Color(0, 204, 204));
         jButtonCleart.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonCleart.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCleart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCleartActionPerformed(evt);
@@ -165,6 +167,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jButtonDelete1.setText("CERRAR");
         jButtonDelete1.setBackground(new java.awt.Color(255, 153, 51));
         jButtonDelete1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButtonDelete1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDelete1ActionPerformed(evt);
@@ -530,7 +533,6 @@ public class JFrameRecord extends javax.swing.JFrame {
     public void insertDefaultDate() {
         DatePickerDay.setDate(LocalDate.now());
         timePickerStart.setTime(LocalTime.now());
-        timePickerEnd.setTime(LocalTime.now());
     }
 
 
