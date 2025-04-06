@@ -8,8 +8,9 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Juan Alejandro
+ * date: 06/04/2025
+ * @author Esteban Colorado Vargas
+ * objetivo: crear la vista de un menu para abrir otras pestañas
  */
 public class JFrameMenu extends javax.swing.JFrame {
     
@@ -39,10 +40,11 @@ public class JFrameMenu extends javax.swing.JFrame {
         jPanelCloseWindow = new javax.swing.JPanel();
         jLabelCloseWindow = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
-        jButtonRecord = new javax.swing.JButton();
+        jButtonCloseProgram = new javax.swing.JButton();
         jButtonEmployee = new javax.swing.JButton();
         jButtonKeys = new javax.swing.JButton();
         jButtonEmployeeType = new javax.swing.JButton();
+        jButtonRecord1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -120,18 +122,18 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jPanel2.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
 
-        jButtonRecord.setBackground(new java.awt.Color(0, 62, 139));
-        jButtonRecord.setFont(new java.awt.Font("Roboto Condensed ExtraBold", 0, 18)); // NOI18N
-        jButtonRecord.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonRecord.setText("REGISTROS");
-        jButtonRecord.setBorderPainted(false);
-        jButtonRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRecord.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCloseProgram.setBackground(new java.awt.Color(0, 62, 139));
+        jButtonCloseProgram.setFont(new java.awt.Font("Roboto Condensed ExtraBold", 0, 18)); // NOI18N
+        jButtonCloseProgram.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCloseProgram.setText("CERRAR PROGRAMA");
+        jButtonCloseProgram.setBorderPainted(false);
+        jButtonCloseProgram.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCloseProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRecordActionPerformed(evt);
+                jButtonCloseProgramActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonRecord, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 200, 40));
+        jPanel2.add(jButtonCloseProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 200, 40));
 
         jButtonEmployee.setBackground(new java.awt.Color(0, 62, 139));
         jButtonEmployee.setFont(new java.awt.Font("Roboto Condensed ExtraBold", 0, 18)); // NOI18N
@@ -171,6 +173,19 @@ public class JFrameMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButtonEmployeeType, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 200, 40));
+
+        jButtonRecord1.setBackground(new java.awt.Color(0, 62, 139));
+        jButtonRecord1.setFont(new java.awt.Font("Roboto Condensed ExtraBold", 0, 18)); // NOI18N
+        jButtonRecord1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRecord1.setText("REGISTROS");
+        jButtonRecord1.setBorderPainted(false);
+        jButtonRecord1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRecord1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRecord1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonRecord1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 200, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,17 +248,20 @@ public class JFrameMenu extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jButtonEmployeeTypeActionPerformed
 
-    private void jButtonRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecordActionPerformed
-        // BOTON PARA ABRIR EL FRAME DE RECORD
-        new JFrameRecordModified().setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_jButtonRecordActionPerformed
+    private void jButtonCloseProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseProgramActionPerformed
+        // BOTON PARA CERRAR EL PROGRAMA
+        System.exit(0);
+    }//GEN-LAST:event_jButtonCloseProgramActionPerformed
 
     private void jButtonKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKeysActionPerformed
         // BOTON PARA ABRIR EL FRAME DE RECORD
         new JFrameKey().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButtonKeysActionPerformed
+
+    private void jButtonRecord1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecord1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRecord1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,10 +299,11 @@ public class JFrameMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCloseProgram;
     private javax.swing.JButton jButtonEmployee;
     private javax.swing.JButton jButtonEmployeeType;
     private javax.swing.JButton jButtonKeys;
-    private javax.swing.JButton jButtonRecord;
+    private javax.swing.JButton jButtonRecord1;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelCloseWindow;
     private javax.swing.JLabel jLabelLogo;

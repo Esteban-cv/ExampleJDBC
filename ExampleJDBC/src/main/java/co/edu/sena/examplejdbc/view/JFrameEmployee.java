@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 /**
  * date: 05/04/2025
  * @author Esteban Colorado Vargas
+ * objetivo: crear la vista para Employee
  */
 public class JFrameEmployee extends javax.swing.JFrame {
     private final IEmployeeController employeeController = new EmployeeController();
@@ -344,7 +345,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
             fillTable();
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar el usuario..."
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar el empleado..."
                 + e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed

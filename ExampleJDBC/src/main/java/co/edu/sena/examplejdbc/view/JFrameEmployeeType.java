@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * date:05/04/2025
  * @author Esteban Colorado Vargas
+ * objetivo: crear la vista para EmployeeType
  */
 public class JFrameEmployeeType extends javax.swing.JFrame {
     

@@ -4,18 +4,12 @@
  */
 package co.edu.sena.examplejdbc.view;
 
-import co.edu.sena.examplejdbc.bd.DBConnection;
 import co.edu.sena.examplejdbc.bd.DBKey;
 import co.edu.sena.examplejdbc.controller.IKeyController;
 import co.edu.sena.examplejdbc.controller.KeyController;
-import co.edu.sena.examplejdbc.model.Employee;
 import co.edu.sena.examplejdbc.model.Key;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * date: 05/04/2025
  * @author Esteban Colorado Vargas
+ * objetivo: crear la vista para Key
  */
 public class JFrameKey extends javax.swing.JFrame {
     
@@ -304,7 +299,7 @@ public class JFrameKey extends javax.swing.JFrame {
             DBKey dbkey = new DBKey();
             Key key = new Key();
             key.setName(jTextFieldName.getText().toUpperCase());
-            key.setRoom(jTextFieldRoom.getText());
+            key.setRoom(jTextFieldRoom.getText().toUpperCase());
             key.setCount(Integer.parseInt(jTextFieldCount.getText()));
             key.setObservation(jTextAreaObservation.getText());
             dbkey.insert(key);

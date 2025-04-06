@@ -29,8 +29,11 @@ public class TestRecord {
         //dBRecord.insert(record);
         
         //Actualizar
-        record = dBRecord.findById(8);
+        record = dBRecord.findById(23);
+        record.setStart_time("22:00:00");
         record.setEnd_time("13:00:00");
+        key = dBKey.findById(19);
+        record.setKey(key);
         dBRecord.update(record);
 
         //ELIMINAR
