@@ -162,7 +162,7 @@
         <Component class="javax.swing.JButton" name="jButtonCloseProgram">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="3e" red="0" type="rgb"/>
+              <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto Condensed ExtraBold" size="18" style="0"/>

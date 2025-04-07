@@ -5,6 +5,7 @@
 package co.edu.sena.examplejdbc.view;
 
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -122,7 +123,7 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jPanel2.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
 
-        jButtonCloseProgram.setBackground(new java.awt.Color(0, 62, 139));
+        jButtonCloseProgram.setBackground(new java.awt.Color(255, 0, 0));
         jButtonCloseProgram.setFont(new java.awt.Font("Roboto Condensed ExtraBold", 0, 18)); // NOI18N
         jButtonCloseProgram.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCloseProgram.setText("CERRAR PROGRAMA");
@@ -238,14 +239,12 @@ public class JFrameMenu extends javax.swing.JFrame {
 
     private void jButtonEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeeActionPerformed
         // BOTON PARA ABRIR EL FRAME DE EMPLOYEE
-        new JFrameEmployee().setVisible(true);
-        setVisible(false);
+        showWindow(new JFrameEmployee());
     }//GEN-LAST:event_jButtonEmployeeActionPerformed
 
     private void jButtonEmployeeTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeeTypeActionPerformed
         // BOTON PARA ABRIR EL FRAME DE EMPLOYEETYPE
-        new JFrameEmployeeType().setVisible(true);
-        setVisible(false);
+        showWindow(new JFrameEmployeeType());
     }//GEN-LAST:event_jButtonEmployeeTypeActionPerformed
 
     private void jButtonCloseProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseProgramActionPerformed
@@ -254,13 +253,13 @@ public class JFrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseProgramActionPerformed
 
     private void jButtonKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKeysActionPerformed
-        // BOTON PARA ABRIR EL FRAME DE RECORD
-        new JFrameKey().setVisible(true);
-        setVisible(false);
+        // BOTON PARA ABRIR EL FRAME DE KEY
+        showWindow(new JFrameKey());
     }//GEN-LAST:event_jButtonKeysActionPerformed
 
     private void jButtonRecord1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecord1ActionPerformed
-        // TODO add your handling code here:
+        // BOTON PARA MOSTRAR EL FRAME RECORD
+        showWindow(new JFrameRecord());
     }//GEN-LAST:event_jButtonRecord1ActionPerformed
 
     /**
@@ -296,6 +295,11 @@ public class JFrameMenu extends javax.swing.JFrame {
                 new JFrameMenu().setVisible(true);
             }
         });
+    }
+    
+    public void showWindow(JFrame frameToShow) {
+        frameToShow.setVisible(true);
+        this.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
