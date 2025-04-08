@@ -204,7 +204,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
 
         jLabelCloseWindow.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCloseWindow.setText("x");
+        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/Icono de Home.png"))); // NOI18N
         jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -222,14 +222,16 @@ public class JFrameEmployee extends javax.swing.JFrame {
         jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
         jPanelCloseWindowLayout.setHorizontalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(jPanelCloseWindowLayout.createSequentialGroup()
+                .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelCloseWindowLayout.setVerticalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanelBackground.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanelBackground.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/background para pestañas.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -294,7 +296,7 @@ public class JFrameEmployee extends javax.swing.JFrame {
     private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
         // EVENTO PARA CERRAR EL PROGRAMA
         int option = JOptionPane.showConfirmDialog(rootPane, 
-                "Estas seguro de salir?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
         
         if(option == JOptionPane.YES_OPTION) {
             new JFrameMenu().setVisible(true);

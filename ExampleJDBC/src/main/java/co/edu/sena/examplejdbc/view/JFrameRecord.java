@@ -229,7 +229,7 @@ public class JFrameRecord extends javax.swing.JFrame {
         jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCloseWindow.setText("x");
+        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/Icono de Home.png"))); // NOI18N
         jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCloseWindow.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -405,7 +405,7 @@ public class JFrameRecord extends javax.swing.JFrame {
     private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
         // EVENTO PARA CERRAR EL PROGRAMA
         int option = JOptionPane.showConfirmDialog(rootPane,
-                "Estas seguro de salir?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
 
         if (option == JOptionPane.YES_OPTION) {
             new JFrameMenu().setVisible(true);

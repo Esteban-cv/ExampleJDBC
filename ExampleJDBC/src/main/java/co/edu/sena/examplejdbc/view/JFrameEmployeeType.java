@@ -174,7 +174,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("x");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/examplejdbc/view/Icono de Home.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -326,7 +326,7 @@ public class JFrameEmployeeType extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // EVENTO PARA CERRAR EL PROGRAMA
         int option = JOptionPane.showConfirmDialog(rootPane, 
-                "Estas seguro de salir?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
         
         if(option == JOptionPane.YES_OPTION) {
             new JFrameMenu().setVisible(true);
