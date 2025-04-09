@@ -15,13 +15,13 @@ public class Record {
     private String start_time;
     private String end_time;
     private Employee employeeId;
-    private Key key;
+    private KeyRoom key;
     private String status;
 
     public Record() {
     }
 
-    public Record(int id, String date_Record, String start_time, String end_time, Employee employeeId, Key key, String status) {
+    public Record(int id, String date_Record, String start_time, String end_time, Employee employeeId, KeyRoom key, String status) {
         this.id = id;
         this.date_Record = date_Record;
         this.start_time = start_time;
@@ -71,11 +71,11 @@ public class Record {
         this.employeeId = employeeId;
     }
 
-    public Key getKey() {
+    public KeyRoom getKey() {
         return key;
     }
 
-    public void setKey(Key key) {
+    public void setKey(KeyRoom key) {
         this.key = key;
     }
 

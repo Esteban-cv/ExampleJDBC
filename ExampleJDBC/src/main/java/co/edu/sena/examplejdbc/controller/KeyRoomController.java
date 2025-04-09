@@ -4,8 +4,8 @@
  */
 package co.edu.sena.examplejdbc.controller;
 
-import co.edu.sena.examplejdbc.bd.DBKey;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.bd.DBKeyRoom;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import java.util.List;
 
 /**
@@ -13,48 +13,48 @@ import java.util.List;
  * @author Esteban Colorado Vargas
  * objetivo: implementar la interface para controlar el modelo key
  */
-public class KeyController implements IKeyController{
+public class KeyRoomController implements IKeyRoomController{
     
-    private DBKey dBK = new DBKey();
+    private DBKeyRoom dBK = new DBKeyRoom();
 
     @Override
-    public void insert(Key key) throws Exception {
-        if("".equals(key.getName())) {
+    public void insert(KeyRoom keyRoom) throws Exception {
+        if("".equals(keyRoom.getName())) {
             throw new Exception("El nombre es obligatorio...");
         }
-        if("".equals(key.getRoom())) {
+        if("".equals(keyRoom.getRoom())) {
             throw new Exception("La sala es obligatoria...");
         }
-        if(key.getCount() < 1) {
+        if(keyRoom.getCount() < 1) {
             throw new Exception("La cantidad no puede ser 0...");
         }
         // insertar
-        dBK.insert(key);
+        dBK.insert(keyRoom);
     }
 
     @Override
-    public void update(Key key) throws Exception {
-        if(key == null) {
+    public void update(KeyRoom keyRoom) throws Exception {
+        if(keyRoom == null) {
             throw new Exception("La llave es nula...");
         }
-        if(key.getId() == 0) {
+        if(keyRoom.getId() == 0) {
             throw new Exception("El id de la llave no puede ser 0...");
         }
-        if("".equals(key.getName())) {
+        if("".equals(keyRoom.getName())) {
             throw new Exception("El nombre no puede estar vacio...");
         }
-        if("".equals(key.getRoom())) {
+        if("".equals(keyRoom.getRoom())) {
             throw new Exception("La sala no puede estar vacia...");
         }
-        if(key.getCount() < 1) {
+        if(keyRoom.getCount() < 1) {
             throw new Exception("La cantidad de llaves debe ser mayor a 0...");
         }
-        Key keyExists = dBK.findById(key.getId());
+        KeyRoom keyExists = dBK.findById(keyRoom.getId());
         if (keyExists == null) {
             throw new Exception("no existe la llave...");
         }
         //actualizar
-        dBK.update(key);
+        dBK.update(keyRoom);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class KeyController implements IKeyController{
         if (id == 0) {
             throw new Exception("El documento es obligatorio...");
         }
-        Key keyExists = dBK.findById(id);
+        KeyRoom keyExists = dBK.findById(id);
         if (keyExists == null) {
             throw new Exception("no existe la llave...");
         }
@@ -71,12 +71,12 @@ public class KeyController implements IKeyController{
     }
 
     @Override
-    public List<Key> findAll() throws Exception {
+    public List<KeyRoom> findAll() throws Exception {
         return dBK.findAll();
     }
 
     @Override
-    public Key findById(int id) throws Exception {
+    public KeyRoom findById(int id) throws Exception {
         if(id == 0) {
             throw new Exception("El id es obligatorio");
         }

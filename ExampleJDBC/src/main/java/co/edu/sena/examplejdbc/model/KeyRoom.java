@@ -8,17 +8,17 @@ package co.edu.sena.examplejdbc.model;
  * date: 13/03/2025
  * @author Esteban Colorado Vargas
  */
-public class Key {
+public class KeyRoom {
     private int id;
     private String name;
     private String room;
     private int count;
     private String observation;
 
-    public Key() {
+    public KeyRoom() {
     }
 
-    public Key(int id, String name, String room, int count, String observation) {
+    public KeyRoom(int id, String name, String room, int count, String observation) {
         this.id = id;
         this.name = name;
         this.room = room;

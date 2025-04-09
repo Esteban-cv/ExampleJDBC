@@ -6,12 +6,11 @@ package co.edu.sena.examplejdbc.view;
 
 import co.edu.sena.examplejdbc.controller.EmployeeController;
 import co.edu.sena.examplejdbc.controller.IEmployeeController;
-import co.edu.sena.examplejdbc.controller.IKeyController;
 import co.edu.sena.examplejdbc.controller.IRecordController;
-import co.edu.sena.examplejdbc.controller.KeyController;
+import co.edu.sena.examplejdbc.controller.KeyRoomController;
 import co.edu.sena.examplejdbc.controller.RecordController;
 import co.edu.sena.examplejdbc.model.Employee;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import co.edu.sena.examplejdbc.model.Record;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.awt.Color;
@@ -21,6 +20,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import co.edu.sena.examplejdbc.controller.IKeyRoomController;
 
 /**
  * date: 05/04/2025
@@ -31,7 +31,7 @@ public class JFrameRecord extends javax.swing.JFrame {
 
     private final IRecordController recordController = new RecordController();
     private final IEmployeeController employeeController = new EmployeeController();
-    private final IKeyController keyController = new KeyController();
+    private final IKeyRoomController keyController = new KeyRoomController();
     int xMouse;
     int yMouse;
 
@@ -355,7 +355,7 @@ public class JFrameRecord extends javax.swing.JFrame {
             record.setEnd_time(timePickerEnd.getTime() != null ? timePickerEnd.getTime().toString()
                     : null);
             record.setEmployeeId((Employee) jComboBoxType_id.getSelectedItem());
-            record.setKey((Key) jComboBoxKeyId.getSelectedItem());
+            record.setKey((KeyRoom) jComboBoxKeyId.getSelectedItem());
             record.setStatus(jComboBoxStatus.getSelectedItem().toString());
             recordController.update(record);
             MessageUtils.showInfoMessage("Registro actualizado exitosamente");
@@ -374,7 +374,7 @@ public class JFrameRecord extends javax.swing.JFrame {
             record.setStart_time(timePickerStart.getTimeStringOrEmptyString());
             record.setEnd_time(null);
             record.setEmployeeId((Employee) jComboBoxType_id.getSelectedItem());
-            Key key = (Key) jComboBoxKeyId.getSelectedItem();
+            KeyRoom key = (KeyRoom) jComboBoxKeyId.getSelectedItem();
             record.setKey(key);
             record.setStatus(jComboBoxStatus.getSelectedItem().toString());
             recordController.insert(record);
@@ -512,7 +512,7 @@ public class JFrameRecord extends javax.swing.JFrame {
             jComboBoxType_id.setModel(modelEmployee);
             modelEmployee.addAll(employees);
 
-            List<Key> allIdKeys = keyController.findAll();
+            List<KeyRoom> allIdKeys = keyController.findAll();
             DefaultComboBoxModel modelKeys = new DefaultComboBoxModel();
             jComboBoxKeyId.setModel(modelKeys);
             modelKeys.addAll(allIdKeys);

@@ -254,7 +254,7 @@ public class JFrameMenu extends javax.swing.JFrame {
 
     private void jButtonKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKeysActionPerformed
         // BOTON PARA ABRIR EL FRAME DE KEY
-        showWindow(new JFrameKey());
+        showWindow(new JFrameKeyRoom());
     }//GEN-LAST:event_jButtonKeysActionPerformed
 
     private void jButtonRecord1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecord1ActionPerformed

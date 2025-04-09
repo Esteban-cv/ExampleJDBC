@@ -4,31 +4,31 @@
  */
 package co.edu.sena.examplejdbc.view;
 
-import co.edu.sena.examplejdbc.bd.DBKey;
-import co.edu.sena.examplejdbc.controller.IKeyController;
-import co.edu.sena.examplejdbc.controller.KeyController;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.bd.DBKeyRoom;
+import co.edu.sena.examplejdbc.controller.KeyRoomController;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import co.edu.sena.examplejdbc.controller.IKeyRoomController;
 
 /**
  * date: 05/04/2025
  * @author Esteban Colorado Vargas
  * objetivo: crear la vista para Key
  */
-public class JFrameKey extends javax.swing.JFrame {
+public class JFrameKeyRoom extends javax.swing.JFrame {
     
-    private final IKeyController keyController = new KeyController();
+    private final IKeyRoomController keyController = new KeyRoomController();
     int xMouse;
     int yMouse;
 
     /**
      * Creates new form JFrameKeyModified
      */
-    public JFrameKey() {
+    public JFrameKeyRoom() {
         initComponents();
         fillTable();
     }
@@ -296,8 +296,8 @@ public class JFrameKey extends javax.swing.JFrame {
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
         // BOTON PARA INSERTAR
         try {
-            DBKey dbkey = new DBKey();
-            Key key = new Key();
+            DBKeyRoom dbkey = new DBKeyRoom();
+            KeyRoom key = new KeyRoom();
             key.setName(jTextFieldName.getText().toUpperCase());
             key.setRoom(jTextFieldRoom.getText().toUpperCase());
             key.setCount(Integer.parseInt(jTextFieldCount.getText()));
@@ -314,8 +314,8 @@ public class JFrameKey extends javax.swing.JFrame {
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // BOTON ACTUALIZAR
         try {
-            DBKey dbkey = new DBKey();
-            Key key = new Key();
+            DBKeyRoom dbkey = new DBKeyRoom();
+            KeyRoom key = new KeyRoom();
             key.setId(Integer.parseInt(jTextFieldId.getText()));
             key.setName(jTextFieldName.getText());
             key.setRoom(jTextFieldRoom.getText());
@@ -333,7 +333,7 @@ public class JFrameKey extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON ELIMINAR
         try {
-            DBKey dBKey = new DBKey();
+            DBKeyRoom dBKey = new DBKeyRoom();
             int id = Integer.parseInt(jTextFieldId.getText());
             dBKey.delete(id);
             MessageUtils.showInfoMessage("La llave ha sido eliminada correctamente...");
@@ -369,7 +369,7 @@ public class JFrameKey extends javax.swing.JFrame {
         if (rowSelected != -1) {
             int idSelected = Integer.parseInt(jTableKey.getValueAt(rowSelected, 0).toString());
             try {
-                Key key = keyController.findById(idSelected);
+                KeyRoom key = keyController.findById(idSelected);
                 jTextFieldId.setText(String.valueOf(idSelected));
                 jTextFieldName.setText(key.getName());
                 jTextFieldRoom.setText(key.getRoom());
@@ -423,21 +423,23 @@ public class JFrameKey extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameKeyRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameKeyRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameKeyRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameKeyRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameKey().setVisible(true);
+                new JFrameKeyRoom().setVisible(true);
             }
         });
     }
@@ -464,8 +466,8 @@ public class JFrameKey extends javax.swing.JFrame {
             model.addColumn("OBSERVACION");
 
             String[] rows = new String[5];
-            List<Key> keys = keyController.findAll();
-            for (Key key : keys) {
+            List<KeyRoom> keys = keyController.findAll();
+            for (KeyRoom key : keys) {
                 rows[0] = String.valueOf(key.getId());
                 rows[1] = key.getName();
                 rows[2] = key.getRoom();

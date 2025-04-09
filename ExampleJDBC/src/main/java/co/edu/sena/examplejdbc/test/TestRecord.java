@@ -5,10 +5,10 @@
 package co.edu.sena.examplejdbc.test;
 
 import co.edu.sena.examplejdbc.bd.DBEmployee;
-import co.edu.sena.examplejdbc.bd.DBKey;
+import co.edu.sena.examplejdbc.bd.DBKeyRoom;
 import co.edu.sena.examplejdbc.bd.DBRecord;
 import co.edu.sena.examplejdbc.model.Employee;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import co.edu.sena.examplejdbc.model.Record;
 import java.util.List;
 
@@ -20,9 +20,9 @@ public class TestRecord {
     public static void main(String[] args) {
         DBRecord dBRecord = new DBRecord();
         DBEmployee dBEmployee = new DBEmployee();
-        DBKey dBKey = new DBKey();
+        DBKeyRoom dBKey = new DBKeyRoom();
         Employee employee = dBEmployee.findById(1115);
-        Key key = dBKey.findById(1);
+        KeyRoom key = dBKey.findById(1);
         
         // INSERTAR
         Record record = new Record(9, "2025-01-26", "10:00:00", null, employee, key, "PENDIENTE");

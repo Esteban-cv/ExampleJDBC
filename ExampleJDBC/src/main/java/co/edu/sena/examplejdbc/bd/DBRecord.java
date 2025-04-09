@@ -5,7 +5,7 @@
 package co.edu.sena.examplejdbc.bd;
 
 import co.edu.sena.examplejdbc.model.Employee;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import co.edu.sena.examplejdbc.model.Record;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.sql.PreparedStatement;
@@ -82,7 +82,7 @@ public class DBRecord extends DBConnection {
     public List<Record> findAll() {
         List<Record> results = new ArrayList<>();
         DBEmployee dBEmployee = new DBEmployee();
-        DBKey dBKey = new DBKey();
+        DBKeyRoom dBKey = new DBKeyRoom();
         try {
             connect();
             String sql = "SELECT * FROM record";
@@ -98,7 +98,7 @@ public class DBRecord extends DBConnection {
                 Employee employee = dBEmployee.findById(resultSet.getInt("employee_id"));
                 record.setEmployeeId(employee);
                 // FK
-                Key key = dBKey.findById(resultSet.getInt("key_id"));
+                KeyRoom key = dBKey.findById(resultSet.getInt("key_id"));
                 record.setKey(key);
                 record.setStatus(resultSet.getString("status"));
                 results.add(record);
@@ -116,7 +116,7 @@ public class DBRecord extends DBConnection {
     public Record findById(int id) {
         Record record = null;
         DBEmployee dBEmployee = new DBEmployee();
-        DBKey dBKey = new DBKey();
+        DBKeyRoom dBKey = new DBKeyRoom();
         try {
             connect();
             String sql = "SELECT * FROM record WHERE `id` = ?";
@@ -133,7 +133,7 @@ public class DBRecord extends DBConnection {
                 Employee employee = dBEmployee.findById(resultSet.getLong("employee_id")); 
                 record.setEmployeeId(employee); 
                 // FK
-                Key key = dBKey.findById(resultSet.getInt("key_id"));
+                KeyRoom key = dBKey.findById(resultSet.getInt("key_id"));
                 record.setKey(key);
                 record.setStatus(resultSet.getString("status"));
             }

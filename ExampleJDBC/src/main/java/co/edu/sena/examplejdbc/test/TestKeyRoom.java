@@ -4,19 +4,19 @@
  */
 package co.edu.sena.examplejdbc.test;
 
-import co.edu.sena.examplejdbc.bd.DBKey;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.bd.DBKeyRoom;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 
 /**
  * date : 13/03/2025
  * @author Esteban Colorado Vargas
  * objective: Probar consultas/transacciones en tabla key.
  */
-public class TestKey {
+public class TestKeyRoom {
     public static void main(String[] args) {
-        DBKey dBKey = new DBKey();
+        DBKeyRoom dBKey = new DBKeyRoom();
         // INSERTAR 
-        Key key = new Key(5, "BICENTENARIO", "Sala 203", 2, "llavero con dos llaves blancas");
+        KeyRoom key = new KeyRoom(5, "BICENTENARIO", "Sala 203", 2, "llavero con dos llaves blancas");
         //dBKey.insert(key); CORRECTO
         // ACTUALIZAR
         //key.setId(5);

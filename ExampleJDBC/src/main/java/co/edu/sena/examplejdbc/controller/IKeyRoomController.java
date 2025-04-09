@@ -4,7 +4,7 @@
  */
 package co.edu.sena.examplejdbc.controller;
 
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import java.util.List;
 
 /**
@@ -12,10 +12,10 @@ import java.util.List;
  * @author Esteban Colorado Vargas
  * objetivo:interface para el modelo key
  */
-public interface IKeyController {
-    public void insert(Key key) throws Exception;
-    public void update(Key key) throws Exception;
+public interface IKeyRoomController {
+    public void insert(KeyRoom key) throws Exception;
+    public void update(KeyRoom key) throws Exception;
     public void delete(int id) throws Exception;
-    public List<Key> findAll() throws Exception;
-    public Key findById(int id) throws Exception;
+    public List<KeyRoom> findAll() throws Exception;
+    public KeyRoom findById(int id) throws Exception;
 }

@@ -5,7 +5,7 @@
 package co.edu.sena.examplejdbc.bd;
 
 import static co.edu.sena.examplejdbc.bd.DBConnection.statement;
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import co.edu.sena.examplejdbc.utils.MessageUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +19,12 @@ import java.util.List;
  * @author Esteban Colorado Vargas objective: permite consultas y transacciones
  * en la tabla employee_type
  */
-public class DBKey extends DBConnection {
+public class DBKeyRoom extends DBConnection {
 
-    public void insert(Key key) {
+    public void insert(KeyRoom key) {
         try {
             connect();
-            String sql = "INSERT INTO `key` (`name`, `room`, `count`, `observation`) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO `key_room` (`name`, `room`, `count`, `observation`) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, key.getName());
             preparedStatement.setString(2, key.getRoom());
@@ -40,10 +40,10 @@ public class DBKey extends DBConnection {
         }
     }
     
-    public void update(Key key) {
+    public void update(KeyRoom key) {
         try {
             connect();
-            String sql = "UPDATE `key` SET name = ?, room = ?, count = ?, observation = ? WHERE id = ?"; // la clave primaria por lo general va en el where
+            String sql = "UPDATE `key_room` SET name = ?, room = ?, count = ?, observation = ? WHERE id = ?"; // la clave primaria por lo general va en el where
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, key.getName());
             stmt.setString(2, key.getRoom());
@@ -62,7 +62,7 @@ public class DBKey extends DBConnection {
     public void delete(int id) {
         try {
             connect();
-            String sql = "delete from `key` where id = ?";
+            String sql = "delete from `key_room` where id = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.executeUpdate();
@@ -75,16 +75,16 @@ public class DBKey extends DBConnection {
         }
     }
 
-    public List<Key> findAll() {
-        List<Key> results = new ArrayList<>();
+    public List<KeyRoom> findAll() {
+        List<KeyRoom> results = new ArrayList<>();
         try {
             connect();
-            String sql = "select * from `key`";
+            String sql = "select * from `key_room`";
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                Key key = new Key();
+                KeyRoom key = new KeyRoom();
                 key.setId(resultSet.getInt("id"));
                 key.setName(resultSet.getString("name"));
                 key.setRoom(resultSet.getString("room"));
@@ -103,17 +103,17 @@ public class DBKey extends DBConnection {
         return results;
     }
 
-    public Key findById(int id) {
-        Key key = null;
+    public KeyRoom findById(int id) {
+        KeyRoom key = null;
         try {
             connect();
-            String sql = "select * from `key` where id = ?";
+            String sql = "select * from `key_room` where id = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
             if (resultSet.next()) {
-                key = new Key();
+                key = new KeyRoom();
                 key.setId(resultSet.getInt("id"));
                 key.setName(resultSet.getString("name"));
                 key.setRoom(resultSet.getString("room"));
@@ -129,6 +129,5 @@ public class DBKey extends DBConnection {
             disconnect();
         }
         return key;
-
     }
 }

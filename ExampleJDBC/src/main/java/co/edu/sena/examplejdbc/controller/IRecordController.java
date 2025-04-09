@@ -4,7 +4,7 @@
  */
 package co.edu.sena.examplejdbc.controller;
 
-import co.edu.sena.examplejdbc.model.Key;
+import co.edu.sena.examplejdbc.model.KeyRoom;
 import co.edu.sena.examplejdbc.model.Record;
 import java.util.List;
 
